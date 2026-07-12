@@ -1,0 +1,35 @@
+# dependances
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# builds
+dist/
+build/
+.next/
+out/
+*.egg-info/
+
+# env et secrets, defense en profondeur
+.env
+.env.*
+!.env.example
+*secret*
+*.token
+*.pem
+*.key
+sbp_*
+ghp_*
+github_pat_*
+sk_live_*
+scripts/*.local.mjs
+
+# OS et editeurs
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/*
+!.vscode/extensions.json

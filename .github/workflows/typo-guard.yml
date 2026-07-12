@@ -1,0 +1,25 @@
+name: typo-guard
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: No em dash, en dash or middle dot in docs
+        run: |
+          set -e
+          BAD=0
+          for f in README.md docs/*.md; do
+            [ -f "$f" ] || continue
+            if grep -nP '[\x{2014}\x{2013}\x{00B7}\x{2022}]' "$f"; then
+              echo "::error file=$f::caractere typographique interdit (em dash, en dash, mediopoint ou puce)"
+              BAD=1
+            fi
+          done
+          exit $BAD
